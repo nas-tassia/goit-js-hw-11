@@ -1,3 +1,4 @@
+import SimpleLightbox from 'simplelightbox';
 export const createGalleryCard = imgInfo =>{
     return `
     <li class="gallery_card">
@@ -25,3 +26,11 @@ export const createGalleryCard = imgInfo =>{
     </li>
     `;
 }
+
+export const lightbox = () => {
+    const lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+});
+lightbox.refresh();
+};

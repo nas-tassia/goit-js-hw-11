@@ -1,7 +1,6 @@
-import axios from 'axios';
-import {createGalleryCard} from './js/render-functions';
+import "izitoast/dist/css/iziToast.min.css";
+import {createGalleryCard, lightbox} from './js/render-functions';
 import {fetchPhotosByQuery} from './js/pixabay-api'
-import SimpleLightbox from 'simplelightbox';
 import iziToast from "izitoast";
 
 const refs = {
@@ -49,11 +48,7 @@ const onSearchFormSubmit = event =>{
             const galleryCard = hits.map(img => createGalleryCard(img)).join('');
             refs.gallery.innerHTML = galleryCard;
 
-            const lightbox = new SimpleLightbox('.gallery a', {
-                captionsData: 'alt',
-                captionDelay: 250,
-            });
-            lightbox.refresh();
+            lightbox();
 
         })
         .catch(err => {
